@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!--unused link for image-->
+  <link rel='icon' type='image/png' sizes='16x16'
+    href='https://raw.githubusercontent.com/Techno-san/Wishing-Card/main/Image/icon.png'>
+
+  <link rel='icon' type='image/png' sizes='32x32'
+    href='https://raw.githubusercontent.com/Techno-san/Wishing-Card/main/Image/icon.png'>
+
+  <link rel='icon' type='image/png' sizes='64x64'
+    href='https://raw.githubusercontent.com/Techno-san/Wishing-Card/main/Image/icon.png'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <title>Farewell invitation - 3D carousel - Developer Anish</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      /* for touch screen */
+      touch-action: none;
+      margin: 0;
+      font-family: 'Caveat', serif;
+      overflow: hidden;
+    }
+
+
+    .ContainerA {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      bottom: 50%;
+      right: 50%;
+    }
+
+    .frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 900px;
+      color: #000;
+      height: 1160px;
+      background-color: rgb(0, 0, 0);
+      padding: 12px 24px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .frame-box {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 5px solid #000000;
+      border-radius: 9px;
+      background: #000000;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transform: translate(-50%, -50%);
+      user-select: none;
+      cursor: pointer;
+    }
+
+
+    .Container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: scale(1.398);
+    }
+
+    html,
+    body {
+      height: 100%;
+      /* for touch screen */
+      touch-action: none;
+    }
+
+    body {
+      overflow: hidden;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      background: black;
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    #drag-container,
+    #spin-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: auto;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transform: rotateX(-10deg);
+      transform: rotateX(-10deg);
+    }
+
+    #drag-container img,
+    #drag-container p {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      line-height: 80px;
+      font-size: 50px;
+      text-align: center;
+      -webkit-box-shadow: 0 0 8px #fff;
+      box-shadow: 0 0 8px #fff;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+    }
+
+    #drag-container img:hover,
+    #drag-container p:hover {
+      -webkit-box-shadow: 0 0 15px #fffd;
+      box-shadow: 0 0 15px #fffd;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+    }
+
+    #drag-container b {
+      font-family: Serif;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+      transform: translate(-50%, -50%) rotateX(90deg);
+      color: #fff;
+
+      padding: 10px;
+      text-align: center;
+      font-size: 45px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+      z-index: -1;
+    }
+
+    #ground {
+      width: 900px;
+      height: 900px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+      transform: translate(-50%, -50%) rotateX(90deg);
+      background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent);
+    }
+
+    #music-container {
+      position: absolute;
+      top: 0;
+      left: 25%;
+    }
+
+    @-webkit-keyframes spin {
+      from {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes spin {
+      from {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+    }
+
+    @-webkit-keyframes spinRevert {
+      from {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+    }
+
+    @keyframes spinRevert {
+      from {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      cursor: hand;
+      pointer-events: all;
+    }
+
+    a:hover {
+      background-color: rgb(0, 0, 0);
+      color: #161913;
+    }
+
+    /*  sm btn styles  */
+    .twitter-btn {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      margin: auto;
+      bottom: 0;
+      background-color: #1da1f2;
+      border: 0.15em solid #1da1f2;
+      border-left: none;
+      border-bottom: none;
+      border-radius: 0% 100% 0% 0% / 0% 100% 0% 93%;
+      height: 120px;
+      width: 120px;
+      cursor: pointer;
+    }
+
+    .in-btn {
+      position: fixed;
+      margin: auto;
+      bottom: 0;
+      right: 0;
+      border: 0.15em solid #0072b1;
+      border-right: none;
+      border-bottom: none;
+      border-radius: 100% 0% 0% 0% / 100% 0% 0% 0%;
+      background-color: #0072b1;
+      height: 120px;
+      width: 120px;
+      cursor: pointer;
+    }
+
+    .fa-twitter {
+      position: absolute;
+      left: 0em;
+      right: .4em;
+      top: .7em;
+      bottom: 0;
+      color: #fff;
+      font-size: 4em;
+    }
+
+    .fa-linkedin-in {
+      position: absolute;
+      left: .4em;
+      right: 0em;
+      top: .7em;
+      bottom: 0;
+      color: #fff;
+      font-size: 1.8em;
+    }
+
+    .in-btn:hover {
+      background-color: #000;
+    }
+
+    .twitter-btn:hover {
+      background-color: rgb(0, 0, 0);
+    }
+
+    /* made with love */
+    .made-with-love {
+      padding: 10px;
+      text-align: center;
+      font-size: 35px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #000000;
+      z-index: -1;
+    }
+
+    .made-with-love i {
+      font-style: normal;
+      color: #ffffff;
+    }
+
+    #heart {
+      font-size: 39px;
+    }
+
+    #coffee {
+      font-size: 40px;
+      position: relative;
+      top: -3px;
+    }
+
+    /* underline animation */
+    .made-with-love a {
+      color: #fffcfc;
+      /*   text-transform: uppercase; */
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      display: inline-block;
+      padding: 4px;
+      position: relative;
+    }
+
+    .made-with-love a:after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1.5px;
+      left: 50%;
+      position: absolute;
+      transition: width 0.2s ease 0s, left 0.2s ease 0s;
+      width: 0;
+    }
+
+    .made-with-love a:hover:after {
+      width: 100%;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ContainerA">
+    <!-- last card -->
+    <div class="Picture-video" id="video">
+      <div class="frame-box" width="800" height="9160" frameborder="0" allowfullscreen>
+        <!--Main code is here-->
+        <!-- partial:index.partial.html -->
+        <div id="drag-container">
+          <div id="spin-container">
+            <!-- 9 -->
+            <p
+              style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);">
+              First of all HAPPY FAREWELL
+              to you 💖...</p>
+            <p
+              style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);">
+              <u>Dress code</u><br>
+              Girls-Shari<br>
+              Boys-Kurta pajama
+            </p>
+            <p
+              style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);">
+              <u>Time</u><br>
+              10.30am to 5pm<br>
+              <u>Venue</u><br>
+              Hotel Intercity
+            </p>
+            <p
+              style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);">
+              <u>Day</u><br>
+              Saturday<br>
+              <u>Date</u><br>
+              04/05/24
+            </p>
+            <p style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);
+            font-size:75px;
+            "><br><br>
+              MENU
+            </p>
+            <p
+              style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);">
+              <u>Welcome Drink</u><br>
+              Fruit punch /Blue lagoon
+            </p>
+            <p style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);
+            line-height: 70px;
+            font-size: 45px;">
+              <u>Snacks</u><br>
+              Veg Manchurian
+              /Semi Gravy
+              /Veg Hakka Noodles
+            </p>
+            <p style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);
+            line-height: 65px;
+            font-size: 45px;">
+              <u>Main Course</u><br>
+              -Paneer Masala
+              -Chole Masala
+              -Veg Biryani
+              -Dal Tadka
+              -Butter naan
+            </p>
+            <p style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMsTpkkTs4COLO_bjzen0RoQJpZ6xCitfOAQ&usqp=CAU);
+            line-height: 65px;
+            font-size: 45px;">
+              <u>Desert</u><br>
+              -Hot gulab jamun <br>
+              -Vanilla ice-cream with
+              hot Chocolate sauce
+            </p>
+
+            <!-- Example image with link 
+  
+  <a target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg"> 
+  
+  <img src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""> </a>. -->
+
+            <!-- Example add video -->
+            <!-- Text at center of ground -->
+
+            <b>We will you 💖...
+            </b>
+          </div>
+
+          <div id="ground"></div>
+        </div>
+        <center>
+          <div id="music-container">
+            <!-- made with love header in music side -->
+            <div class="made-with-love">
+              <!-- <a href="https://techno-san.github.io/Dragging-paper-/">Next ></a>-->
+              <br>Thing<i id="heart">💖</i>& Feel<i id="coffee"></i>
+              <a href="https://www.instagram.com/___anish._082?igsh=MTA2dDJuZms3d21odg=="> </a><br><br>
+            </div>
+          </div>
+        </center>
+        <!--Main code is end here -->
+        <!-- frame code -->
+        <div class="frame">
+        </div>
+        <!-- sm btns -->
+
+        <a href="https://www.instagram.com/___anish._082?igsh=MTA2dDJuZms3d21odg=="><button class="twitter-btn"><i
+              class="fab fa-twitter"></i></button></a>
+
+        <!-- made with love footer -->
+        <div class="made-with-love">
+          <a href="https://techno-san.github.io/Dragging-paper-/"><b>Next ></b></a><br>Made with <i id="heart">💖</i>&<i
+            id="coffee">☕</i> by
+          <a href="https://www.instagram.com/___anish._082?igsh=MTA2dDJuZms3d21odg=="> Anish </a>
+        </div>
+      </div>
+
+      <style>
+        .github-corner:hover .octo-arm {
+          animation: octocat-wave 560ms ease-in-out
+        }
+
+        @keyframes octocat-wave {
+
+          0%,
+          100% {
+            transform: rotate(0)
+          }
+
+          20%,
+          60% {
+            transform: rotate(-25deg)
+          }
+
+          40%,
+          80% {
+            transform: rotate(10deg)
+          }
+        }
+
+        @media (max-width:500px) {
+          .github-corner:hover .octo-arm {
+            animation: none
+          }
+
+          .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out
+          }
+        }
+      </style>
+</body>
+
+
+<script>
+  var radius = 450; // how big of the radius
+  var autoRotate = true; // auto rotate or not
+  var rotateSpeed = -75; // unit: seconds/360 degrees
+  var imgWidth = 300; // width of images (unit: px)
+  var imgHeight = 390; // height of images (unit: px)
+
+  // Link of background music - set 'null' if you dont want to play background music
+  var bgMusicURL = 'https://audio.jukehost.co.uk/PLiNnH7YUlwbTp9sWJ5TvG6tyELn46lk';
+  var bgMusicControls = true; // Show UI music control
+
+
+
+  // ===================== start =======================
+  // animation start after 1000 miliseconds
+  setTimeout(init, 1000);
+
+  var odrag = document.getElementById('drag-container');
+  var ospin = document.getElementById('spin-container');
+  var aImg = ospin.getElementsByTagName('img');
+  var aVid = ospin.getElementsByTagName('p');
+  var aEle = [...aImg, ...aVid]; // combine 2 arrays
+
+  // Size of images
+  ospin.style.width = imgWidth + "px";
+  ospin.style.height = imgHeight + "px";
+
+  // Size of ground - depend on radius
+  var ground = document.getElementById('ground');
+  ground.style.width = radius * 3 + "px";
+  ground.style.height = radius * 3 + "px";
+
+  function init(delayTime) {
+    for (var i = 0; i < aEle.length; i++) {
+      aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+      aEle[i].style.transition = "transform 1s";
+      aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+    }
+  }
+
+  function applyTranform(obj) {
+    // Constrain the angle of camera (between 0 and 180)
+    if (tY > 180) tY = 180;
+    if (tY < 0) tY = 0;
+
+    // Apply the angle
+    obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+  }
+
+  function playSpin(yes) {
+    ospin.style.animationPlayState = (yes ? 'running' : 'paused');
+  }
+
+  var sX, sY, nX, nY, desX = 0,
+    desY = 0,
+    tX = 0,
+    tY = 10;
+
+  // auto spin
+  if (autoRotate) {
+    var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+    ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+  }
+
+  // add background music
+  if (bgMusicURL) {
+    document.getElementById('music-container').innerHTML += `
+<audio src="${bgMusicURL}" ${bgMusicControls ? 'controls' : ''} autoplay loop>    
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+`;
+  }
+
+  // setup events
+  document.onpointerdown = function (e) {
+    clearInterval(odrag.timer);
+    e = e || window.event;
+    var sX = e.clientX,
+      sY = e.clientY;
+
+    this.onpointermove = function (e) {
+      e = e || window.event;
+      var nX = e.clientX,
+        nY = e.clientY;
+      desX = nX - sX;
+      desY = nY - sY;
+      tX += desX * 0.1;
+      tY += desY * 0.1;
+      applyTranform(odrag);
+      sX = nX;
+      sY = nY;
+    };
+
+    this.onpointerup = function (e) {
+      odrag.timer = setInterval(function () {
+        desX *= 0.95;
+        desY *= 0.95;
+        tX += desX * 0.1;
+        tY += desY * 0.1;
+        applyTranform(odrag);
+        playSpin(false);
+        if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+          clearInterval(odrag.timer);
+          playSpin(true);
+        }
+      }, 17);
+      this.onpointermove = this.onpointerup = null;
+    };
+
+    return false;
+  };
+
+  document.onmousewheel = function (e) {
+    e = e || window.event;
+    var d = e.wheelDelta / 20 || -e.detail;
+    radius += d;
+    init(1);
+  };
+
+
+</script>
+
+</html>
