@@ -17,28 +17,20 @@ body {
 }
 
 .container {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    bottom: 30%;
-    right: 50%;
-    width: 280px;
-    height: 417.6px;
-    background: #ffffff;
-    border: 4rem;
-    border-radius: 30px;
-    border-color: 2px, #B5F44A;
-
-    background-color: #1da1f2;
-               
-    width: 50%;
-    height: 80%; 
     margin: auto;
     position: absolute;
     left: 40%;
     right: 60%;
     top: 50%;
     bottom: 50%; 
+    width: 25%;
+    height: 80%; 
+    background: #ffffff;
+    border: 4rem;
+    border-radius: 30px;
+    border-color: 2px, #B5F44A;
+
+    background-color: #1da1f2;
     overflow-x: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
