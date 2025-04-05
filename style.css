@@ -23,10 +23,9 @@ body {
 
   margin: auto;
   position: absolute;
-  left: 50px;
+  left: 20px;
   right: 50px;
   top: 50px;
-  bottom: 50px;
   width: 1250px;
   height: 2083.4px;
   background: #ffffff;
@@ -47,7 +46,7 @@ body {
   margin: auto;
   position: absolute;
   left: 0;
-  top: 300px;
+  top: 0;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,7 +106,7 @@ body {
 
 #music-container {
   position: absolute;
-  top: 500px;
+  top: 250px;
   left: 450px;
   size: 50px;
   width: 100px;
