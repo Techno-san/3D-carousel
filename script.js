@@ -1,8 +1,8 @@
-var radius = 540; // how big of the radius
+var radius = 810; // how big of the radius
 var autoRotate = true; // auto rotate or not
 var rotateSpeed = -60; // unit: seconds/360 degrees
-var imgWidth = 270; // width of images (unit: px)
-var imgHeight = 382.5; // height of images (unit: px)
+var imgWidth = 405; // width of images (unit: px)
+var imgHeight = 573.75; // height of images (unit: px)
 
 // Link of background music - set 'null' if you dont want to play background music
 var bgMusicURL = 'Your eyes.mp3';
