@@ -1,118 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--unused link for image-->
-    <link rel='icon' type='image/png' sizes='16x16'
-        href='https://raw.githubusercontent.com/Techno-san/Wishing-Card/main/Image/icon.png'>
-    <title>CodePen - Instant photo film galerie</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Developer Rahul - 3D carousel</title>
+  <link rel="stylesheet" href="./style.css">
+
 </head>
-
 <body>
-    <!-- partial:index.partial.html -->
-    <div class="container">
-        <div id="drag-container">
-          <div id="spin-container">
-        
-        
-        
-        
-        
-        
-            <img src="https://iili.io/J946IJ2.jpg" alt="">
-            <img src="https://iili.io/JHr0hyG.jpg" alt="">
-            <img src="https://iili.io/J946xUl.jpg" alt="">
-            <img src="https://iili.io/JHr0Nj4.jpg" alt="">
-            <img src="https://iili.io/J946TRS.jpg" alt="">
-            <img src="https://iili.io/JHr0wuf.jpg" alt="">
-            <img src="https://iili.io/J2YhP6b.jpg" alt="">
-            <img src="https://iili.io/J2YhsFj.jpg" alt="">
-            <img src="https://iili.io/J2YhLcx.jpg" alt="">
-            <!-- Example image with link -->
-            <a target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg">
-            </a>
-        
-            <!-- Example add video  -->
-            <video controls autoplay="autoplay" loop>
-              <source src="Video.mp4" type="video/mp4">
-            </video>
-        
-            <!-- Text at center of ground -->
-            <p>I Love You From Anish</p>
-          </div>
-          <div id="ground"></div>
-        </div>
-        
-        <div id="music-container" ></div>
-        
-        
-        
-        <!-- github corner (https://github.com/tholman/github-corners) -->
-        <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-        <!-- partial -->
-          <script  src="./script.js"></script>
-        
+<!-- partial:index.partial.html -->
+ <div class="container">
+<div id="drag-container">
+  <div id="spin-container">
+
+
+
+
+
+
+    <img src="https://iili.io/J946IJ2.jpg" alt="">
+    <img src="https://iili.io/JHr0hyG.jpg" alt="">
+    <img src="https://iili.io/J946xUl.jpg" alt="">
+    <img src="https://iili.io/JHr0Nj4.jpg" alt="">
+    <img src="https://iili.io/J946TRS.jpg" alt="">
+    <img src="https://iili.io/JHr0wuf.jpg" alt="">
+    <img src="https://iili.io/J2YhP6b.jpg" alt="">
+    <img src="https://iili.io/J2YhsFj.jpg" alt="">
+    <img src="https://iili.io/J2YhLcx.jpg" alt="">
+    <!-- Example image with link -->
+    <a target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg">
+    </a>
+
+    <!-- Example add video  -->
+    <video controls autoplay="autoplay" loop>
+      <source src="Video.mp4" type="video/mp4">
+    </video>
+
+    <!-- Text at center of ground -->
+    <p>I Love You From Anish</p>
+  </div>
+  <div id="ground"></div>
+</div>
+
+<div id="music-container" ></div>
+
+
+
+<!-- github corner (https://github.com/tholman/github-corners) -->
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<!-- partial -->
+  <script  src="./script.js"></script>
+</div>
 </body>
-
-<script>
-    function autoplay() {
-        var t = setTimeout(function () {
-            var button = document.querySelector('[title="Play"]') || false;
-            if (button) {
-                console.log("Click", button);
-                button.click();
-            }
-        }, 999);
-    }
-    document.addEventListener("DOMContentLoaded", (event) => {
-        autoplay();
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/easing/EasePack.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
-<script>
-
-    $(document).ready(function () {
-        var count = 0;
-
-        $(".tarot-card").click(function () {
-            var card = $(this);
-            if (count < 11) {
-                $(this).removeClass("top").addClass("bottom");
-
-                count++;
-            }
-            if (count == 11) {
-                $("div").removeClass("bottom");
-
-                count = 0;
-            }
-            shuffle(card);
-        });
-    });
-
-    function shuffle(card) {
-        TweenLite.fromTo(
-            card,
-            0.6,
-            {
-                x: 410,
-                y: -15,
-                ease: Expo.easeOut
-            },
-            {
-                x: 0,
-                y: 0,
-                ease: Expo.easeIn
-            }
-        );
-    }
-</script>
-
-</html>
