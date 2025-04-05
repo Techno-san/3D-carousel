@@ -1,43 +1,7 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
-*,
-*:before,
-*:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
+* {
     margin: 0;
-    background-color: #ffffff;
-    /* for touch screen */
-    touch-action: none;
-}
-
-.container {
-    margin: auto;
-    position: absolute;
-    left: 40%;
-    right: 60%;
-    top: 50%;
-    bottom: 50%; 
-    width: 50%;
-    height: 75%; 
-    background: #ffffff;
-    border: 4rem;
-    border-radius: 30px;
-    border-color: 2px, #B5F44A;
-
-    background-color: #1da1f2;
-    overflow-x: hidden;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transform: scale(.997);
-} 
+    padding: 0;
+  }
   
   html,
   body {
@@ -74,8 +38,8 @@ body {
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
     position: absolute;
-    left: 50%;
-    top: 250%;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     line-height: 200px;
@@ -95,9 +59,8 @@ body {
   #drag-container p {
     font-family: Serif;
     position: absolute;
+    top: 100%;
     left: 50%;
-    top: 350%;
-    font-size: 25px;
     -webkit-transform: translate(-50%,-50%) rotateX(90deg);
             transform: translate(-50%,-50%) rotateX(90deg);
     color: #fff;
@@ -116,9 +79,8 @@ body {
   
   #music-container {
     position: absolute;
-    top: 20%;
-    left: 35%;
-    color: #111;
+    top: 0;
+    left: 0;
   }
   
   @-webkit-keyframes spin {
