@@ -21,8 +21,37 @@
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
   }
+
+  
+.container {
+  margin: auto;
+  position: absolute;
+  left: 40%;
+  right: 60%;
+  top: 50%;
+  bottom: 50%; 
+  width: 880px;
+  height: 1300px; 
+  background: #ffffff;
+  border: 4rem;
+  border-radius: 20px;
+  border-color: 2px, #B5F44A;
+
+  background-color: #1da1f2;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transform: scale(.997);
+} 
+
   
   #drag-container, #spin-container {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 300px;
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -79,8 +108,8 @@
   
   #music-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 250px;
+    left: 250px;
   }
   
   @-webkit-keyframes spin {
